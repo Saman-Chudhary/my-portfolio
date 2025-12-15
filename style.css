@@ -1,0 +1,360 @@
+/* GLOBAL RESET & BASE STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #007bff; /* Blue */
+    --accent-color: #28a745; /* Green */
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --section-padding: 80px 5%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+/* HEADER & NAVIGATION */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--dark-color);
+    margin-left: 25px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect: Underline on Nav Links */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out;
+}
+
+.navbar a:hover {
+    color: var(--primary-color);
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* REUSABLE SECTIONS */
+.section {
+    padding: var(--section-padding);
+    padding-top: 100px; /* Account for fixed header */
+}
+
+.alt-bg {
+    background-color: #f1f1f1;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--dark-color);
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--section-padding);
+    padding-top: 100px;
+    background: linear-gradient(135deg, var(--light-color), #e9ecef);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    color: var(--dark-color);
+}
+
+.hero-content p {
+    margin: 20px 0 40px;
+    font-size: 1.1rem;
+}
+
+.hero-image {
+    width: 40%;
+    /* This section is a placeholder for an image or illustration */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    min-height: 300px;
+}
+
+/* BUTTONS (Hover Effect) */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Hover Effect: Scale and Shadow */
+.primary-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* SKILLS SECTION */
+.skills-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.skill-group {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 450px;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect: Lift Card */
+.skill-group:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skill-group h3 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.skill-group ul {
+    list-style: none;
+}
+
+.skill-group ul li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.skill-group ul li:last-child {
+    border-bottom: none;
+}
+
+/* EXPERIENCE SECTION (Timeline Structure) */
+.timeline-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--primary-color);
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hover Effect: Highlight Timeline Item */
+.timeline-item:hover {
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item h3 {
+    color: var(--dark-color);
+    font-size: 1.5rem;
+}
+
+.timeline-item .company {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.timeline-item .dates {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.timeline-item ul {
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.timeline-item ul li {
+    margin-bottom: 8px;
+}
+
+/* CONTACT SECTION */
+.contact-info {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+/* Hover Effect: Underline on Contact Links */
+.contact-info a.hover-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-out;
+}
+
+.contact-info a:hover.hover-underline::after {
+    width: 100%;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--dark-color);
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* ANIMATION SETUP (Elements start hidden) */
+[data-animation] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-fade-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-fade-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-fade-left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px 5%;
+    }
+
+    .navbar {
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-image {
+        display: none; /* Hide image on small screens for better focus */
+    }
+
+    .skill-group {
+        max-width: 100%;
+    }
+}
