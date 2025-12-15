@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saman Chudhary | WordPress Developer</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Saman Chudhary – WordPress Developer, Shopify Expert & SEO Specialist. Premium animated single-page portfolio." />
+  <meta name="keywords" content="WordPress Developer, Shopify Developer, SEO Expert, Elementor, WooCommerce" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:#0b1120;color:#e5e7eb}
+    a{text-decoration:none;color:inherit}
+
+    /* HEADER */
+    header{position:fixed;top:0;left:0;width:100%;background:rgba(2,6,23,.9);backdrop-filter:blur(12px);z-index:1000}
+    .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:20px}
+    .logo{font-size:1.4rem;font-weight:700}
+    .logo span{color:#38bdf8}
+    nav ul{list-style:none;display:flex;gap:30px}
+    nav a{font-weight:500;position:relative}
+    nav a.active,nav a:hover{color:#38bdf8}
+
+    /* MOBILE MENU */
+    .menu-btn{display:none;font-size:24px}
+    @media(max-width:768px){
+      nav ul{position:absolute;top:70px;right:20px;background:#020617;flex-direction:column;padding:20px;border-radius:15px;display:none}
+      nav ul.show{display:flex}
+      .menu-btn{display:block}
+    }
+
+    section{padding:130px 20px;max-width:1200px;margin:auto}
+    h2{text-align:center;font-size:2.5rem;margin-bottom:60px}
+
+    /* HERO */
+    #home{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center}
+    #home h1{font-size:3.5rem}
+    #home span{color:#38bdf8}
+    #home p{max-width:700px;margin:20px auto;color:#94a3b8}
+    .btn{display:inline-block;margin-top:30px;padding:14px 36px;border-radius:50px;background:#38bdf8;color:#020617;font-weight:600;transition:.3s}
+    .btn:hover{transform:translateY(-6px);box-shadow:0 15px 30px rgba(56,189,248,.5)}
+
+    /* SERVICES */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+    .card{background:#020617;padding:40px;border-radius:20px;transition:.4s}
+    .card:hover{transform:translateY(-15px)}
+    .card i{font-size:30px;color:#38bdf8;margin-bottom:20px}
+
+    /* PROJECTS */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .project{position:relative;border-radius:20px;overflow:hidden}
+    .project img{height:260px;width:100%;object-fit:cover}
+    .overlay{position:absolute;inset:0;background:rgba(2,6,23,.85);display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;transition:.4s}
+    .project:hover .overlay{opacity:1}
+
+    /* TESTIMONIALS */
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+    .testimonial{background:#020617;padding:40px;border-radius:20px}
+    .testimonial img{width:60px;height:60px;border-radius:50%;margin-bottom:15px}
+
+    /* CONTACT FORM */
+    form{max-width:600px;margin:auto;display:grid;gap:20px}
+    input,textarea{padding:15px;border-radius:10px;border:none;background:#020617;color:#fff}
+
+    footer{background:#020617;padding:60px 20px;text-align:center;color:#94a3b8}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Saman<span>.</span></div>
+    <i class="fa-solid fa-bars menu-btn" onclick="toggleMenu()"></i>
+    <nav>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="home" data-aos="fade-up">
+  <div>
+    <h1>Saman <span>Chudhary</span></h1>
+    <p>WordPress Developer • Shopify Expert • SEO Specialist</p>
+    <a href="#projects" class="btn">View Portfolio</a>
+  </div>
+</section>
+
+<section id="services">
+  <h2 data-aos="fade-up">Services</h2>
+  <div class="grid">
+    <div class="card" data-aos="fade-up"><i class="fa-brands fa-wordpress"></i><h3>WordPress</h3><p>Custom & fast WordPress sites</p></div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100"><i class="fa-brands fa-shopify"></i><h3>Shopify</h3><p>High‑converting stores</p></div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200"><i class="fa-solid fa-chart-line"></i><h3>SEO</h3><p>Technical & on‑page SEO</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 data-aos="fade-up">Projects</h2>
+  <div class="projects">
+    <div class="project" data-aos="zoom-in"><img src="https://picsum.photos/600/400?1"><div class="overlay"><h3>Business Website</h3></div></div>
+    <div class="project" data-aos="zoom-in" data-aos-delay="100"><img src="https://picsum.photos/600/400?2"><div class="overlay"><h3>WooCommerce Store</h3></div></div>
+    <div class="project" data-aos="zoom-in" data-aos-delay="200"><img src="https://picsum.photos/600/400?3"><div class="overlay"><h3>Shopify Store</h3></div></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <h2 data-aos="fade-up">Testimonials</h2>
+  <div class="testimonials">
+    <div class="testimonial" data-aos="fade-right"><img src="https://i.pravatar.cc/100?img=1"><p>"Excellent work and fast delivery."</p><strong>Client A</strong></div>
+    <div class="testimonial" data-aos="fade-up"><img src="https://i.pravatar.cc/100?img=2"><p>"Highly recommended WordPress expert."</p><strong>Client B</strong></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 data-aos="fade-up">Contact</h2>
+  <form action="https://formspree.io/f/xyzzabcd" method="POST" data-aos="fade-up">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button class="btn" type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 Saman Chudhary</p>
+  <p><a href="https://github.com/yourusername">GitHub</a> | <a href="https://www.linkedin.com/in/saman-chudhary-99b734191/">LinkedIn</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({duration:1200,once:true});
+
+function toggleMenu(){document.getElementById('menu').classList.toggle('show')}
+
+// ACTIVE MENU ON SCROLL
+const sections=document.querySelectorAll('section');
+const links=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(sec=>{if(pageYOffset>=sec.offsetTop-150){current=sec.id}});
+  links.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')=='#'+current){a.classList.add('active')}});
+});
+</script>
+
+</body>
+</html>
