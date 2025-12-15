@@ -1,380 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Developer Portfolio</title>
-  <!-- Font Awesome Icons and AOS CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    /* Reset and basic styles */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; }
-    h1,h2,h3 { color: #4a8eff; margin-bottom: 0.5rem; }
-    a { color: inherit; text-decoration: none; }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; color: #fff;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                  url("https://picsum.photos/id/1/1200/800") center/cover no-repeat;
-    }
-    .hero h1 { font-size: 3rem; }
-    .hero p { font-size: 1.2rem; margin: 1rem 0; }
-    .hero button {
-      padding: 10px 20px; background: #4a8eff; border: none; border-radius: 5px;
-      color: #fff; cursor: pointer;
-    }
-    .hero button:hover { background: #336ac4; }
-
-    /* General section container */
-    section { padding: 60px 20px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    /* About */
-    #about { background: #f4f4f4; }
-    #about .container {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
-    }
-    #about img {
-      flex: 1 1 300px; max-width: 100%; border-radius: 10px;
-    }
-    #about .info { flex: 2 1 400px; }
-
-    /* Services */
-    #services .cards {
-      display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
-    }
-    #services .card {
-      flex: 1 1 250px;
-      background: #fff; border: 1px solid #ddd;
-      padding: 20px; text-align: center; border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    #services .card i {
-      font-size: 2rem; color: #4a8eff; margin-bottom: 10px;
-    }
-
-    /* Projects */
-    #projects .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
-    #projects .project {
-      position: relative; overflow: hidden;
-    }
-    #projects .project img {
-      width: 100%; display: block;
-    }
-    #projects .overlay {
-      position: absolute; top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.6); color:#fff;
-      display:flex; align-items:center; justify-content:center;
-      opacity: 0; transition: opacity 0.3s ease;
-      text-align: center;
-    }
-    #projects .project:hover .overlay { opacity: 1; }
-
-    /* Skills */
-    #skills .skill {
-      margin: 15px 0;
-    }
-    #skills .skill span {
-      display: block; margin-bottom: 5px;
-    }
-    .progress-bar {
-      background: #ddd; border-radius: 5px;
-      overflow: hidden;
-    }
-    .progress {
-      height: 10px; background: #4a8eff;
-      width: 0; /* JS/CSS sets final width */
-      transition: width 1s ease;
-    }
-
-    /* Experience (Timeline) */
-    #experience .timeline {
-      position: relative; padding-left: 30px;
-      border-left: 3px solid #4a8eff;
-    }
-    #experience .item {
-      margin-bottom: 20px; position: relative;
-    }
-    #experience .year {
-      position: absolute; left: -60px; background: #4a8eff;
-      color: #fff; padding: 5px 10px; border-radius: 5px;
-    }
-
-    /* Pricing */
-    #pricing .cards {
-      display: flex; flex-wrap: wrap; gap: 20px;
-      justify-content: center;
-    }
-    #pricing .card {
-      flex: 1 1 250px;
-      text-align: center;
-      border: 1px solid #ddd; border-radius: 10px; overflow: hidden;
-    }
-    #pricing .card header {
-      background: #4a8eff; color: #fff; padding: 15px;
-    }
-    #pricing .card .price {
-      font-size: 2rem; margin: 15px 0;
-    }
-    #pricing .card ul {
-      list-style: none; padding: 0 20px 20px;
-    }
-    #pricing .card ul li {
-      margin: 5px 0;
-    }
-    #pricing .card button {
-      width: 100%; padding: 10px;
-      border: none; background: #4a8eff; color: #fff;
-      cursor: pointer;
-    }
-    #pricing .card button:hover {
-      background: #336ac4;
-    }
-
-    /* Testimonials */
-    #testimonials {
-      background: #f4f4f4; text-align: center;
-    }
-    #testimonials .testimonial {
-      max-width: 400px; margin: 20px auto;
-    }
-    #testimonials img {
-      width: 80px; height: 80px; border-radius: 50%;
-      margin-bottom: 10px;
-    }
-    #testimonials p {
-      font-style: italic;
-    }
-    #testimonials h4 {
-      margin-top: 10px; font-weight: normal;
-    }
-
-    /* Contact Form */
-    #contact form {
-      display: flex; flex-wrap: wrap; gap: 10px;
-    }
-    #contact input,
-    #contact textarea {
-      flex: 1 1 100%; padding: 10px;
-      border: 1px solid #ccc; border-radius: 5px;
-    }
-    #contact textarea { resize: vertical; }
-    #contact button {
-      padding: 10px 20px; border: none;
-      background: #4a8eff; color: #fff;
-      cursor: pointer; border-radius: 5px;
-    }
-    #contact button:hover {
-      background: #336ac4;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center; padding: 20px;
-    }
-    footer .social a {
-      margin: 0 10px; color: #4a8eff; font-size: 1.2rem;
-    }
-    footer p {
-      color: #666; font-size: 0.9rem; margin-top: 10px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      #about .container {
-        flex-direction: column;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saman Chudhary | Senior WordPress Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero" data-aos="fade-in">
-    <h1>Hello, I'm Jane Doe</h1>
-    <p>A full-stack developer building modern web experiences.</p>
-    <button>Download Resume</button>
-  </header>
 
-  <!-- About Section -->
-  <section id="about" data-aos="fade-up">
-    <div class="container">
-      <img src="https://picsum.photos/seed/dev/500/400" alt="About me photo">
-      <div class="info">
-        <h2>About Me</h2>
-        <p>Passionate developer with experience in creating dynamic web applications using HTML, CSS, and JavaScript. I turn ideas into reality on the web.</p>
-      </div>
-    </div>
-  </section>
+    <header class="header">
+        <a href="#hero" class="logo">Saman.Dev</a>
+        <nav class="navbar">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#experience" class-="nav-link">Experience</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+    </header>
 
-  <!-- Services Section -->
-  <section id="services" data-aos="fade-up">
-    <div class="container">
-      <h2>What I Do</h2>
-      <div class="cards">
-        <div class="card" data-aos="zoom-in">
-          <i class="fa-solid fa-code"></i>
-          <h3>Web Development</h3>
-          <p>Building responsive and interactive websites.</p>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <p class="greeting" data-animation="fade-up">Hello, I'm</p>
+            <h1 data-animation="fade-up" data-delay="100">Saman Chudhary</h1>
+            <h2 data-animation="fade-up" data-delay="200">Senior WordPress Developer</h2>
+            <p data-animation="fade-up" data-delay="300">
+                Designing, coding, and modifying high-performance websites from layout to function, according to client specifications.
+            </p>
+            <a href="#contact" class="btn primary-btn" data-animation="fade-up" data-delay="400">Get in Touch <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="card" data-aos="zoom-in" data-aos-delay="100">
-          <i class="fa-solid fa-paint-brush"></i>
-          <h3>Design</h3>
-          <p>Creating clean and modern UI/UX designs.</p>
+        <div class="hero-image" data-animation="fade-right" data-delay="500">
+            <i class="fas fa-laptop-code"></i>
         </div>
-        <div class="card" data-aos="zoom-in" data-aos-delay="200">
-          <i class="fa-solid fa-mobile-screen"></i>
-          <h3>Mobile Apps</h3>
-          <p>Developing mobile-friendly web applications.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" data-aos="fade-up">
-    <div class="container">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="project" data-aos="fade-up">
-          <img src="https://picsum.photos/id/1050/400/300" alt="Project One">
-          <div class="overlay"><h3>Project One</h3></div>
+    <section class="section" id="skills">
+        <h2 class="section-title" data-animation="fade-down">My Expertise</h2>
+        <div class="skills-container">
+            <div class="skill-group skill-card" data-animation="fade-left">
+                <h3><i class="fas fa-wrench"></i> Technical Stack</h3>
+                <ul>
+                    <li>Web Design</li>
+                    <li>Responsive Design</li>
+                    <li>SEO Expertise / Technical SEO</li>
+                    <li>Troubleshoot Existing Code</li>
+                    <li>Shopify Store Customizing</li>
+                    <li>Website Performance Optimization</li>
+                </ul>
+            </div>
+            <div class="skill-group skill-card" data-animation="fade-right">
+                <h3><i class="fas fa-lightbulb"></i> Soft Skills</h3>
+                <ul>
+                    <li>Effective Time Management</li>
+                    <li>Communication Skills</li>
+                    <li>Dedicated Team Player</li>
+                    <li>Ability to Work Under Pressure</li>
+                    <li>Project Planning & Management</li>
+                    <li>Customer Engagement & Satisfaction</li>
+                </ul>
+            </div>
         </div>
-        <div class="project" data-aos="fade-up" data-aos-delay="100">
-          <img src="https://picsum.photos/id/1069/400/300" alt="Project Two">
-          <div class="overlay"><h3>Project Two</h3></div>
-        </div>
-        <div class="project" data-aos="fade-up" data-aos-delay="200">
-          <img src="https://picsum.photos/id/1070/400/300" alt="Project Three">
-          <div class="overlay"><h3>Project Three</h3></div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills" data-aos="fade-up">
-    <div class="container">
-      <h2>Skills</h2>
-      <div class="skill" data-aos="fade-right" data-aos-duration="1000">
-        <span>HTML/CSS</span>
-        <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
-      </div>
-      <div class="skill" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
-        <span>JavaScript</span>
-        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
-      </div>
-      <div class="skill" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
-        <span>Python</span>
-        <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" data-aos="fade-up">
-    <div class="container">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="item" data-aos="fade-left">
-          <div class="year">2023</div>
-          <h3>Senior Developer at TechCorp</h3>
-          <p>Led frontend development on high-impact projects.</p>
+    <section class="section alt-bg" id="experience">
+        <h2 class="section-title" data-animation="fade-up">Work History</h2>
+        
+        <div class="timeline-item" data-animation="fade-up" data-delay="50">
+            <h3>Senior WordPress Developer</h3>
+            <p class="company">SMCSE Solutions PVT LTD, Lahore</p>
+            <p class="dates">November, 2023 - Present</p>
+            <ul>
+                <li>Design, code, and modify websites, from layout to function, according to client specifications.</li>
+                <li>Optimize website performance through code optimization and caching techniques.</li>
+                <li>Plan and manage development projects, including timelines and deliverables.</li>
+            </ul>
         </div>
-        <div class="item" data-aos="fade-left" data-aos-delay="200">
-          <div class="year">2021</div>
-          <h3>Web Developer at WebStart</h3>
-          <p>Built web applications and improved UI designs.</p>
+
+        <div class="timeline-item" data-animation="fade-up" data-delay="150">
+            <h3>Senior WordPress Developer (Freelancer)</h3>
+            <p class="company">Freelancer, USA, Saudi Arabia, Canada</p>
+            <p class="dates">July, 2023 - Present</p>
+            <ul>
+                <li>Executed Technical SEO and SEO Strategy Development for various clients.</li>
+                <li>Troubleshot problems and diagnosed system faults.</li>
+            </ul>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Pricing Section -->
-  <section id="pricing" data-aos="fade-up">
-    <div class="container">
-      <h2>Pricing</h2>
-      <div class="cards">
-        <div class="card" data-aos="flip-left">
-          <header><h3>Basic</h3></header>
-          <p class="price">$10<span>/month</span></p>
-          <ul><li>Feature A</li><li>Feature B</li></ul>
-          <button>Choose</button>
+        <div class="timeline-item" data-animation="fade-up" data-delay="250">
+            <h3>WordPress / Shopify Developer</h3>
+            <p class="company">RF Studio, Islamabad</p>
+            <p class="dates">March, 2020 - July, 2023</p>
+            <ul>
+                <li>Designed and maintained WordPress websites based on client requirements.</li>
+                <li>Implemented SEO best practices, optimizing performance and ensuring proper caching.</li>
+                <li>Set up Shopify Stores and customized themes.</li>
+            </ul>
         </div>
-        <div class="card" data-aos="flip-left" data-aos-delay="200">
-          <header><h3>Pro</h3></header>
-          <p class="price">$25<span>/month</span></p>
-          <ul><li>Feature A</li><li>Feature B</li><li>Feature C</li></ul>
-          <button>Choose</button>
+    </section>
+
+    <section class="section" id="contact">
+        <h2 class="section-title" data-animation="fade-up">Let's Connect</h2>
+        <div class="contact-info" data-animation="fade-up" data-delay="100">
+            <p><i class="fas fa-envelope"></i> Email: <a href="mailto:samanchudhary12345@gmail.com" class="hover-glow">samanchudhary12345@gmail.com</a></p>
+            <p><i class="fas fa-phone"></i> Phone: <a href="tel:+923114815166" class="hover-glow">+923114815166</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> Location: Machiwal District Vehari Pakistan</p>
         </div>
-        <div class="card" data-aos="flip-left" data-aos-delay="400">
-          <header><h3>Premium</h3></header>
-          <p class="price">$50<span>/month</span></p>
-          <ul><li>All Features</li><li>Priority Support</li></ul>
-          <button>Choose</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" data-aos="fade-up">
-    <div class="container">
-      <h2>Testimonials</h2>
-      <div class="testimonial" data-aos="fade-up">
-        <img src="https://picsum.photos/id/237/80/80" alt="Avatar">
-        <p>"John delivered exceptional work and communication."</p>
-        <h4>- Happy Client</h4>
-      </div>
-      <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://picsum.photos/id/238/80/80" alt="Avatar">
-        <p>"Professional and talented developer. Highly recommended!"</p>
-        <h4>- Satisfied Client</h4>
-      </div>
-    </div>
-  </section>
+    <footer>
+        <p>&copy; 2025 Saman Chudhary. Developed for GitHub Pages.</p>
+    </footer>
 
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up">
-    <div class="container">
-      <h2>Contact</h2>
-      <form>
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Message" rows="4" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="social">
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-      </div>
-      <p>&copy; 2025 Jane Doe. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      AOS.init({duration: 800, once: true});
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
