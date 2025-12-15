@@ -3,7 +3,7 @@
 🚀 WordPress Developer | Shopify Expert | SEO Specialist
 
 ## 🌐 Live Portfolio
-https://Saman-Chudhary.github.io/my-portfolio/
+https://saman-chudhary.github.io/my-portfolio/
 
 ## 🛠 Skills
 - WordPress Development
