@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll Reveal Animation Logic
+    // Scroll Reveal Animation Logic using Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -19,23 +19,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const delay = element.getAttribute('data-delay') || 0;
 
                 setTimeout(() => {
-                    if (animationType === 'fade-up') {
-                        element.classList.add('animate-fade-up');
-                    } else if (animationType === 'fade-right') {
-                        element.classList.add('animate-fade-right');
-                    } else if (animationType === 'fade-left') {
-                        element.classList.add('animate-fade-left');
-                    }
-                    observer.unobserve(element);
+                    // Add the appropriate animation class
+                    element.classList.add(`animate-${animationType}`);
                 }, delay);
+                
+                // Stop observing once the element is animated
+                observer.unobserve(element);
             }
         });
     }, {
-        threshold: 0.1 // Trigger when 10% of the element is visible
+        // Options for the observer: trigger when 15% of the element is visible
+        threshold: 0.15 
     });
 
     // Apply observer to all elements with the data-animation attribute
     document.querySelectorAll('[data-animation]').forEach(el => {
+        // Ensure initial hidden state for elements outside viewport
+        if (!el.classList.contains('animate-fade-up')) { 
+            if (el.getAttribute('data-animation') === 'fade-up') el.style.transform = 'translateY(20px)';
+            if (el.getAttribute('data-animation') === 'fade-down') el.style.transform = 'translateY(-20px)';
+            if (el.getAttribute('data-animation') === 'fade-right') el.style.transform = 'translateX(-20px)';
+            if (el.getAttribute('data-animation') === 'fade-left') el.style.transform = 'translateX(20px)';
+        }
+
         observer.observe(el);
     });
 });
